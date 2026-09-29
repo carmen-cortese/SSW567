@@ -1,6 +1,6 @@
-# SSW567_classify_triangle
+# SSW567
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/carmen-cortese/SSW567_classify_triangle/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/carmen-cortese/SSW567_classify_triangle/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/carmen-cortese/SSW567/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/carmen-cortese/SSW567/tree/main)
 
 ## HW 02: Triangle classification
 
