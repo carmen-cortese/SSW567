@@ -2,12 +2,13 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/carmen-cortese/SSW567/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/carmen-cortese/SSW567/tree/main)
 
-## HW 02: Triangle classification
+## HW 02: Triangle classification ([`triangle_testing/`](triangle_testing))
 
 - `classify_triangle.py`: classifies a triangle as equilateral, isosceles or scalene, and says whether it is a right triangle
 - `test_classify_triangle.py`: unit tests
 
 ```
+cd triangle_testing
 python -m unittest -v test_classify_triangle.py
 ```
 

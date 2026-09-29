@@ -11,7 +11,7 @@ jobs:
           command: pip install -r GitHubApi567-hw03a/requirements.txt
       - run:
           name: Run HW02 triangle tests
-          command: python -m unittest -v test_classify_triangle.py
+          command: cd triangle_testing && python -m unittest -v test_classify_triangle.py
       - run:
           name: Run HW03a GitHub API tests
           command: cd GitHubApi567-hw03a && python -m unittest -v test_github_api.py
