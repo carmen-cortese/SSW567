@@ -27,8 +27,12 @@ Repo: helloworld Number of commits: 6
 ...
 ```
 
-Run the tests (they use fake API responses, so they need no network access and don't count against GitHub's rate limit):
+Run the tests:
 
 ```
 python -m unittest -v test_github_api.py
+python -m unittest -v test_github_api_live.py
 ```
+
+- `test_github_api_live.py` calls the real GitHub API for `carmen-cortese` (repos with commits), `CarmenCorteseBTP` (a real user with no repos) and a user that doesn't exist.
+- `test_github_api.py` uses fake API responses for cases that can't be set up reliably on a real account: exact commit counts, results split across several pages, empty repos and rate-limit errors.
