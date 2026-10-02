@@ -1,6 +1,8 @@
 # SSW567
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/Nfiy1BJX4J3rurg1SduVdY/HLSKNaioAcMATPAZDKFXRQ/tree/main.svg?style=svg&circle-token=CCIPRJ_M6bj2tCkFkySC7Hw81114j_6c0854352dfb9bbf11f49f0567db55cc712a5e7f)](https://dl.circleci.com/status-badge/redirect/circleci/Nfiy1BJX4J3rurg1SduVdY/HLSKNaioAcMATPAZDKFXRQ/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/Nfiy1BJX4J3rurg1SduVdY/HLSKNaioAcMATPAZDKFXRQ/tree/HW03b_Mocking.svg?style=svg&circle-token=CCIPRJ_M6bj2tCkFkySC7Hw81114j_6c0854352dfb9bbf11f49f0567db55cc712a5e7f)](https://dl.circleci.com/status-badge/redirect/circleci/Nfiy1BJX4J3rurg1SduVdY/HLSKNaioAcMATPAZDKFXRQ/tree/HW03b_Mocking)
+
+The badge above shows the build status of the `HW03b_Mocking` branch.
 
 ## HW 02: Triangle classification ([`triangle_testing/`](triangle_testing))
 
@@ -37,3 +39,14 @@ python -m unittest -v test_github_api_live.py
 
 - `test_github_api_live.py` calls the real GitHub API for `carmen-cortese` (repos with commits), `CarmenCorteseBTP` (a real user with no repos) and a user that doesn't exist.
 - `test_github_api.py` uses fake API responses for cases that can't be set up reliably on a real account: exact commit counts, results split across several pages, empty repos and rate-limit errors.
+
+## HW 03b: Mocking (this branch, `HW03b_Mocking`)
+
+`test_github_api.py` now replaces every GitHub API call with `unittest.mock`: each test class that touches API code is decorated with `@mock.patch("github_api.requests.get")`, so the tests make no calls to GitHub. `github_api.py` is unchanged from HW 03a.
+
+```
+cd GitHubApi567-hw03a
+python -m unittest -v test_github_api.py
+```
+
+On this branch, the CircleCI config no longer runs `test_github_api_live.py`, so CI makes no calls to GitHub. The live tests still run on `main`.

@@ -13,11 +13,8 @@ jobs:
           name: Run HW02 triangle tests
           command: cd triangle_testing && python -m unittest -v test_classify_triangle.py
       - run:
-          name: Run HW03a GitHub API tests
+          name: Run HW03b mocked GitHub API tests
           command: cd GitHubApi567-hw03a && python -m unittest -v test_github_api.py
-      - run:
-          name: Run HW03a tests against the real GitHub API
-          command: cd GitHubApi567-hw03a && python -m unittest -v test_github_api_live.py
 
 workflows:
   build-and-test:
