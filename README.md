@@ -1,6 +1,6 @@
 # SSW567
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/carmen-cortese/SSW567/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/carmen-cortese/SSW567/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/Nfiy1BJX4J3rurg1SduVdY/HLSKNaioAcMATPAZDKFXRQ/tree/main.svg?style=svg&circle-token=CCIPRJ_M6bj2tCkFkySC7Hw81114j_6c0854352dfb9bbf11f49f0567db55cc712a5e7f)](https://dl.circleci.com/status-badge/redirect/circleci/Nfiy1BJX4J3rurg1SduVdY/HLSKNaioAcMATPAZDKFXRQ/tree/main)
 
 ## HW 02: Triangle classification ([`triangle_testing/`](triangle_testing))
 
