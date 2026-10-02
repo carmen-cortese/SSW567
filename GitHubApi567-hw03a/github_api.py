@@ -29,6 +29,8 @@ def get_all_pages(url, fetch=fetch_json):
         if status != 200:
             message = body.get("message", "") if isinstance(body, dict) else ""
             raise ValueError(f"GitHub API error {status}: {message}")
+        if not isinstance(body, list):
+            raise ValueError("GitHub API returned an unexpected response (expected a list)")
         items.extend(body)
     return items
 

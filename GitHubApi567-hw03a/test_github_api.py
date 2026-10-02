@@ -58,6 +58,27 @@ class TestGetRepoCommitCounts(unittest.TestCase):
         })
         self.assertEqual(get_repo_commit_counts("u", fetch), [("big", 135)])
 
+    def test_repos_over_multiple_pages_are_all_listed(self):
+        page2 = repos_url("u") + "&page=2"
+        names = [f"repo{i}" for i in range(102)]
+        pages = {
+            repos_url("u"): (200, [{"name": n} for n in names[:100]], page2),
+            page2: (200, [{"name": n} for n in names[100:]], None),
+        }
+        for n in names:
+            pages[commits_url("u", n)] = (200, [{}], None)
+        results = get_repo_commit_counts("u", fake_api(pages))
+        self.assertEqual(results, [(n, 1) for n in names])
+
+    def test_error_on_one_repo_raises_instead_of_partial_results(self):
+        fetch = fake_api({
+            repos_url("u"): (200, [{"name": "ok"}, {"name": "broken"}], None),
+            commits_url("u", "ok"): (200, [{}] * 5, None),
+            commits_url("u", "broken"): (500, {"message": "Server Error"}, None),
+        })
+        with self.assertRaisesRegex(ValueError, "500"):
+            get_repo_commit_counts("u", fetch)
+
     def test_unknown_user_raises(self):
         fetch = fake_api({repos_url("nobody"): (404, {"message": "Not Found"}, None)})
         with self.assertRaisesRegex(ValueError, "404"):
@@ -90,6 +111,11 @@ class TestGetAllPages(unittest.TestCase):
     def test_error_with_non_json_body(self):
         fetch = fake_api({"a": (500, None, None)})
         with self.assertRaisesRegex(ValueError, "500"):
+            get_all_pages("a", fetch)
+
+    def test_success_status_with_non_list_body_raises(self):
+        fetch = fake_api({"a": (200, None, None)})
+        with self.assertRaisesRegex(ValueError, "unexpected response"):
             get_all_pages("a", fetch)
 
 
